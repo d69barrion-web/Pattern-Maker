@@ -52,9 +52,21 @@
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
       const totalHeight = length * scale;
-
+      const center = leg + 2 * scale;
+      const bottomY = canvas.height - 20; // offset from bottom edge
+      const waistY = bottomY - totalHeight + scale; // adjusted for -1"
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // center line
+      ctx.beginPath();
+      ctx.moveTo(center, waistY);
+      ctx.lineTo(center, bottomY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]); // solid
+      ctx.stroke();
+      ctx.closePath();
+      
       // bottom (hemline)
       const bottomY = canvas.height - 20; // offset from bottom edge
       ctx.beginPath();
@@ -82,7 +94,6 @@
       ctx.closePath();
 
       // waistline (based on length input)
-      const waistY = bottomY - totalHeight + scale; // adjusted for -1"
       ctx.beginPath();
       ctx.moveTo(50, waistY);
       ctx.lineTo(350, waistY);
