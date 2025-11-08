@@ -29,6 +29,7 @@
 <body>
   <h2>Pants Pattern Generator</h2>
   <label for="length">Length (inches):</label>
+  <label for="leg">actual leg (inches):</label>
   <input type="number" id="length" value="40" min="10" max="60">
   <button onclick="drawPattern()">Draw Pattern</button>
 
@@ -43,7 +44,7 @@
   <script>
     const canvas = document.getElementById('patternCanvas');
     const ctx = canvas.getContext('2d');
-    const scale = 16; // 10 pixels = 1 inch
+    const scale = 16; // 16 pixels = 1 inch
 
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
