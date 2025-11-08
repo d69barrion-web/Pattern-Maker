@@ -52,21 +52,11 @@
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
       const totalHeight = length * scale;
-      const center = (((leg + 2) ÷ 4) + 4) * scale);
-      
-      
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // center line
-      const bottomY = canvas.height - 20; // offset from bottom edge
-      ctx.beginPath();
-      ctx.moveTo(center, waistY);
-      ctx.lineTo(center, bottomY);
-      ctx.strokeStyle = "#000";
-      ctx.setLineDash([]); // solid
-      ctx.stroke();
-      ctx.closePath();
+      
       
       // bottom (hemline)
       const bottomY = canvas.height - 20; // offset from bottom edge
