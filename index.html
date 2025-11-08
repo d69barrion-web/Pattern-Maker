@@ -32,7 +32,9 @@
   <p><label for="length">Length:</label>
   <input type="number" id="length" value="40" min="10" max="60"><br>
   <label for="flatHip">Flat Hip:</label>
-  <input type="number" id="flatHip" value="25" min="10" max="60"></p>
+  <input type="number" id="flatHip" value="25" min="10" max="60"><br>
+  <label for="crotch">Crotch:</label>
+  <input type="number" id="crotch" value="10" min="7" max="12"></p>
   <p></p>
   <button onclick="drawPattern()">Draw Pattern</button>
   
@@ -52,15 +54,16 @@
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
       const flatHip = parseFloat(document.getElementById('flatHip').value);
+      const crotch = parseFloat(document.getElementById('crotch').value);
       const totalHeight = length * scale;
       const center = ((flatHip / 8) + 4) * scale;
       const bottomY = canvas.height - 20; // offset from bottom edge
-      const waistY = bottomY - totalHeight + scale; // adjusted for -1"
+      const waistY = (bottomY - totalHeight) + scale; // adjusted for -1"
+      const crotchY = waistY + (crotch * scale); // offset from bottom edge 
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // center line
-      
       ctx.beginPath();
       ctx.moveTo(center, waistY);
       ctx.lineTo(center, bottomY);
@@ -70,7 +73,6 @@
       ctx.closePath();
       
       // bottom (hemline)
-      
       ctx.beginPath();
       ctx.moveTo(50, bottomY);
       ctx.lineTo(300, bottomY);
@@ -96,10 +98,18 @@
       ctx.closePath();
 
       // waistline (based on length input)
-      
       ctx.beginPath();
       ctx.moveTo(50, waistY);
       ctx.lineTo(350, waistY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([6, 4]);
+      ctx.stroke();
+      ctx.closePath();
+
+      // crotch line
+      ctx.beginPath();
+      ctx.moveTo(50, crotchY);
+      ctx.lineTo(350, crotchY);
       ctx.strokeStyle = "#f00";
       ctx.setLineDash([6, 4]);
       ctx.stroke();
@@ -114,6 +124,7 @@
       ctx.fillText("4\" above bottom", 310, bottomY - 4 * scale + 5);
       ctx.fillStyle = "#f00";
       ctx.fillText("Waistline", 360, waistY + 5);
+      ctx.fillText("Crotchline", 360, crotchY + 5);
     }
 
     // initial draw
