@@ -30,8 +30,8 @@
   <h2>Pants Pattern Generator</h2>
   <p><label for="length">Length (inches):</label>
   <input type="number" id="length" value="40" min="10" max="60"><br>
-  <label for="leg">actual leg (inches):</label>
-  <input type="number" id="leg" value="25" min="10" max="60"></p>
+  <label for="flatHip">flat hip (inches):</label>
+  <input type="number" id="flatHip" value="25" min="10" max="60"></p>
   <p></p>
   <button onclick="drawPattern()">Draw Pattern</button>
   
@@ -50,9 +50,9 @@
 
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
-      const leg = parseFloat(document.getElementById('leg').value);
+      const flatHip = parseFloat(document.getElementById('flatHip').value);
       const totalHeight = length * scale;
-      const center = ((leg / 4) + 2.5) * scale;
+      const center = ((flatHip / 8) + 3) * scale;
       const bottomY = canvas.height - 20; // offset from bottom edge
       const waistY = bottomY - totalHeight + scale; // adjusted for -1"
       
