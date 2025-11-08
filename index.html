@@ -52,7 +52,7 @@
     function drawPattern() {
       const length = parseFloat(document.getElementById('length').value);
       const totalHeight = length * scale;
-      const center = leg + 2 * scale;
+      const center = (((leg + 2) ÷ 4) + 4) * scale);
       const bottomY = canvas.height - 20; // offset from bottom edge
       const waistY = bottomY - totalHeight + scale; // adjusted for -1"
       
