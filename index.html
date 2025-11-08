@@ -75,6 +75,38 @@
       ctx.setLineDash([]); // solid
       ctx.stroke();
       ctx.closePath();
+
+      // grainline arrow (center)
+ctx.beginPath();
+ctx.moveTo(center, waistY + 20); // start point (a bit below waist)
+ctx.lineTo(center, bottomY - 20); // end point (a bit above hem)
+ctx.strokeStyle = "#00f";
+ctx.lineWidth = 2;
+ctx.setLineDash([]); // solid
+ctx.stroke();
+ctx.closePath();
+
+// arrowheads
+ctx.beginPath();
+// top arrowhead (pointing up)
+ctx.moveTo(center - 6, waistY + 25);
+ctx.lineTo(center, waistY + 15);
+ctx.lineTo(center + 6, waistY + 25);
+
+// bottom arrowhead (pointing down)
+ctx.moveTo(center - 6, bottomY - 25);
+ctx.lineTo(center, bottomY - 15);
+ctx.lineTo(center + 6, bottomY - 25);
+
+ctx.fillStyle = "#00f";
+ctx.fill();
+ctx.closePath();
+
+// grainline label
+ctx.fillStyle = "#00f";
+ctx.font = "14px Arial";
+ctx.fillText("Grainline", center + 10, (waistY + bottomY) / 2);
+    
       
       // bottom (hemline)
       ctx.beginPath();
