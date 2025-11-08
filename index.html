@@ -63,7 +63,7 @@
       const bottomY = canvas.height - 20; // offset from bottom edge
       const waistY = (bottomY - totalHeight) + scale; // adjusted for -1"
       const crotchY = waistY + ((crotch - 1) * scale); // offset from bottom edge 
-      const legY = (crotchY + 4) * scale; // offset from bottom edge 
+      const legY = crotchY + (4 * scale); // offset from bottom edge 
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
