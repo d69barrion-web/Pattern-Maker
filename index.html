@@ -53,12 +53,13 @@
       const length = parseFloat(document.getElementById('length').value);
       const totalHeight = length * scale;
       const center = (((leg + 2) ÷ 4) + 4) * scale);
-      const bottomY = canvas.height - 20; // offset from bottom edge
+      
       
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // center line
+      const bottomY = canvas.height - 20; // offset from bottom edge
       ctx.beginPath();
       ctx.moveTo(center, waistY);
       ctx.lineTo(center, bottomY);
