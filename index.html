@@ -36,7 +36,9 @@
   <label for="crotch">Crotch:</label>
   <input type="number" id="crotch" value="10" min="7" max="12"><br>
   <label for="leg">Leg:</label>
-  <input type="number" id="leg" value="21" min="10" max="60"></p>
+  <input type="number" id="leg" value="21" min="10" max="60"><br>
+  <label for="knee">Knee</label>
+  <input type="number" id="knee" value="18" min="10" max="60"></p>
   <p></p>
   <button onclick="drawPattern()">Draw Pattern</button>
   
@@ -64,6 +66,7 @@
       const waistY = (bottomY - totalHeight) + scale; // adjusted for -1"
       const crotchY = waistY + ((crotch - 1) * scale); // offset from bottom edge 
       const legY = crotchY + (4 * scale); // offset from bottom edge 
+      const kneeY = waistY + (((length / 2) - .75) * scale); // offset from bottom edge 
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -160,6 +163,15 @@ ctx.fillText("Grainline", center + 10, (waistY + bottomY) / 2);
       ctx.stroke();
       ctx.closePath();
 
+      // knee line
+      ctx.beginPath();
+      ctx.moveTo(50, kneeY);
+      ctx.lineTo(350, kneeY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([6, 4]);
+      ctx.stroke();
+      ctx.closePath();
+
       // labels
       ctx.setLineDash([]);
       ctx.fillStyle = "#000";
@@ -171,6 +183,7 @@ ctx.fillText("Grainline", center + 10, (waistY + bottomY) / 2);
       ctx.fillText("Waistline", 360, waistY + 5);
       ctx.fillText("Crotchline", 360, crotchY + 5);
       ctx.fillText("Legline", 360, legY + 5);
+      ctx.fillText("Kneeline", 360, kneeY + 5);
     }
 
     // initial draw
