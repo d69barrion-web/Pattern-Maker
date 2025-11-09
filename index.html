@@ -64,11 +64,11 @@
       const totalHeight = length * scale;
       const center = ((flatHip / 6) + 4) * scale;
       const bottomY = canvas.height - 20; // offset from bottom edge
-      const waistY = (bottomY - totalHeight) + scale; // adjusted for -1"
-      const frontCrotchY = waistY + ((crotch - 1) * scale); // offset from bottom edge 
+      const frontWaistY = (bottomY - totalHeight) + scale; // adjusted for -1"
+      const frontCrotchY = frontWaistY + ((crotch - 1) * scale); // offset from bottom edge 
       const backCrotchY = frontCrotchY + (.5 * scale);
       const legY = frontCrotchY + (4 * scale); // offset from bottom edge 
-      const kneeY = waistY + (((length / 2) - .75) * scale); // offset from bottom edge 
+      const kneeY = frontWaistY + (((length / 2) - .75) * scale); // offset from bottom edge 
       
       const refY = (crotch / 4) * scale;
 
