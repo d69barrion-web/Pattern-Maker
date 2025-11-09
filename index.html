@@ -65,8 +65,9 @@
       const center = ((flatHip / 6) + 4) * scale;
       const bottomY = canvas.height - 20; // offset from bottom edge
       const waistY = (bottomY - totalHeight) + scale; // adjusted for -1"
-      const crotchY = waistY + ((crotch - 1) * scale); // offset from bottom edge 
-      const legY = crotchY + (4 * scale); // offset from bottom edge 
+      const frontCrotchY = waistY + ((crotch - 1) * scale); // offset from bottom edge 
+      const backCrotchY = frontCrotchY + (.5 * scale);
+      const legY = frontCrotchY + (4 * scale); // offset from bottom edge 
       const kneeY = waistY + (((length / 2) - .75) * scale); // offset from bottom edge 
       
       const refY = (crotch / 4) * scale;
@@ -87,35 +88,35 @@
       ctx.closePath();
 
       // grainline arrow (center)
-ctx.beginPath();
-ctx.moveTo(center, waistY + refY + 20); // start point (a bit below waist)
-ctx.lineTo(center, bottomY - 20); // end point (a bit above hem)
-ctx.strokeStyle = "#00f";
-ctx.lineWidth = 2;
-ctx.setLineDash([]); // solid
-ctx.stroke();
-ctx.closePath();
+      ctx.beginPath();
+      ctx.moveTo(center, waistY + refY + 20); // start point (a bit below waist)
+      ctx.lineTo(center, bottomY - 20); // end point (a bit above hem)
+      ctx.strokeStyle = "#00f";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([]); // solid
+      ctx.stroke();
+      ctx.closePath();
 
-// arrowheads
-ctx.beginPath();
-// top arrowhead (pointing up)
-ctx.moveTo(center - 6, waistY + 25);
-ctx.lineTo(center, waistY + 15);
-ctx.lineTo(center + 6, waistY + 25);
+      // arrowheads
+      ctx.beginPath();
+      // top arrowhead (pointing up)
+      ctx.moveTo(center - 6, waistY + 25);
+      ctx.lineTo(center, waistY + 15);
+      ctx.lineTo(center + 6, waistY + 25);
 
-// bottom arrowhead (pointing down)
-ctx.moveTo(center - 6, bottomY - 25);
-ctx.lineTo(center, bottomY - 15);
-ctx.lineTo(center + 6, bottomY - 25);
+      // bottom arrowhead (pointing down)
+      ctx.moveTo(center - 6, bottomY - 25);
+      ctx.lineTo(center, bottomY - 15);
+      ctx.lineTo(center + 6, bottomY - 25);
 
-ctx.fillStyle = "#00f";
-ctx.fill();
-ctx.closePath();
+      ctx.fillStyle = "#00f";
+      ctx.fill();
+      ctx.closePath();
 
-// grainline label
-ctx.fillStyle = "#00f";
-ctx.font = "14px Arial";
-ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
+      // grainline label
+      ctx.fillStyle = "#00f";
+      ctx.font = "14px Arial";
+      ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
     
       
       // bottom (hemline)
@@ -126,7 +127,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.setLineDash([]); // solid
       ctx.stroke();
       ctx.closePath();
-
+      
       // 2" above bottom
       ctx.beginPath();
       ctx.moveTo(50, bottomY - 2 * scale);
@@ -143,7 +144,16 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.stroke();
       ctx.closePath();
 
-      // waistline (based on length input)
+      // back waistline
+      ctx.beginPath();
+      ctx.moveTo(50, backWaistY);
+      ctx.lineTo(350, backWaistY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([2, 4]);
+      ctx.stroke();
+      ctx.closePath();
+      
+      // front waistline (based on length input)
       ctx.beginPath();
       ctx.moveTo(50, waistY);
       ctx.lineTo(350, waistY);
@@ -152,10 +162,37 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.stroke();
       ctx.closePath();
 
-      // crotch line
+      // back hipline
       ctx.beginPath();
-      ctx.moveTo(50, crotchY);
-      ctx.lineTo(350, crotchY);
+      ctx.moveTo(50, backHipY);
+      ctx.lineTo(350, backHipY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([2, 4]);
+      ctx.stroke();
+      ctx.closePath();
+
+      // front hipline
+      ctx.beginPath();
+      ctx.moveTo(50, frontHipY);
+      ctx.lineTo(350, frontHipY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([2, 4]);
+      ctx.stroke();
+      ctx.closePath();
+      
+      // front crotch line
+      ctx.beginPath();
+      ctx.moveTo(50, frontCrotchY);
+      ctx.lineTo(350, frontCrotchY);
+      ctx.strokeStyle = "#f00";
+      ctx.setLineDash([2, 4]);
+      ctx.stroke();
+      ctx.closePath();
+
+      // back crotch line
+      ctx.beginPath();
+      ctx.moveTo(50, backCrotchY);
+      ctx.lineTo(350, backCrotchY);
       ctx.strokeStyle = "#f00";
       ctx.setLineDash([2, 4]);
       ctx.stroke();
@@ -187,8 +224,12 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.fillText("2\" above bottom", 310, bottomY - 2 * scale + 5);
       ctx.fillText("4\" above bottom", 310, bottomY - 4 * scale + 5);
       ctx.fillStyle = "#f00";
-      ctx.fillText("Waistline", 360, waistY + 5);
-      ctx.fillText("Crotchline", 360, crotchY + 5);
+      ctx.fillText("Back Waistline", 360, backWaistY + 5);
+      ctx.fillText(" Front Waistline", 360, waistY + 5);
+      ctx.fillText("Back Hipline", 360, backHipY + 5);
+      ctx.fillText("front Hipline", 360, frontHipY + 5);
+      ctx.fillText("Front Crotchline", 360, frontCrotchY + 5);
+      ctx.fillText("Back Crotchline", 360, backCrotchY + 5);
       ctx.fillText("Legline", 360, legY + 5);
       ctx.fillText("Kneeline", 360, kneeY + 5);
     }
