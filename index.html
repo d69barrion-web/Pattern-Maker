@@ -38,7 +38,9 @@
   <label for="leg">Leg:</label>
   <input type="number" id="leg" value="21" min="10" max="60"><br>
   <label for="knee">Knee</label>
-  <input type="number" id="knee" value="18" min="10" max="60"></p>
+  <input type="number" id="knee" value="18" min="10" max="60"><br>
+  <label for="bottom">Bottom</label>
+  <input type="number" id="bottom" value="16" min="10" max="60"></p>
   <p></p>
   <button onclick="drawPattern()">Draw Pattern</button>
   <button onclick="downloadPattern()">Download PNG</button>
@@ -61,6 +63,8 @@
       const flatHip = parseFloat(document.getElementById('flatHip').value);
       const crotch = parseFloat(document.getElementById('crotch').value);
       const leg = parseFloat(document.getElementById('leg').value);
+      const knee = parseFloat(document.getElementById('knee').value);
+      const bottom = parseFloat(document.getElementById('bottom').value);
       
       const totalHeight = length * scale;
       const center = ((flatHip / 6) + 4) * scale;
@@ -77,6 +81,13 @@
       const backHipY = frontHipY - refY;
       const backWaistY = frontWaistY - refY;
       
+      const frontBottom = (bottom / 2) * scale;
+      const backBottom = frontBottom + (2 * scale);
+      const frontKnee = (knee / 2) * scale;
+      const backKnee = frontKnee + (2 * scale);
+      const frontLeg = (leg / 2) * scale;
+      const backLeg = frontLeg + (2 * scale);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // center line
@@ -233,6 +244,15 @@
       ctx.fillText("Back Crotchline", 710, backCrotchY + 5);
       ctx.fillText("Legline", 710, legY + 5);
       ctx.fillText("Kneeline", 710, kneeY + 5);
+   
+      // bottom line
+      ctx.beginPath();
+      ctx.moveTo(center - (frontBottom / 2), bottomY);
+      ctx.lineTo(center + (frontBottom / 2), bottomY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
     }
 
     // initial draw
