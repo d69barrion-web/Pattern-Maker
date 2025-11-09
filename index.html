@@ -72,15 +72,15 @@
       
       const refY = (crotch / 4) * scale;
 
-      const frontHipY = crotchY - refY;
+      const frontHipY = frontCrotchY - refY;
       const backHipY = frontHipY - refY;
-      const backWaistY = waistY - refY;
+      const backWaistY = frontWaistY - refY;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // center line
       ctx.beginPath();
-      ctx.moveTo(center, waistY - refY);
+      ctx.moveTo(center, frontWaistY - refY);
       ctx.lineTo(center, bottomY);
       ctx.strokeStyle = "#000";
       ctx.setLineDash([]); // solid
@@ -89,7 +89,7 @@
 
       // grainline arrow (center)
       ctx.beginPath();
-      ctx.moveTo(center, waistY + refY + 20); // start point (a bit below waist)
+      ctx.moveTo(center, backWaistY + 20); // start point (a bit below waist)
       ctx.lineTo(center, bottomY - 20); // end point (a bit above hem)
       ctx.strokeStyle = "#00f";
       ctx.lineWidth = 2;
@@ -100,9 +100,9 @@
       // arrowheads
       ctx.beginPath();
       // top arrowhead (pointing up)
-      ctx.moveTo(center - 6, waistY + 25);
-      ctx.lineTo(center, waistY + 15);
-      ctx.lineTo(center + 6, waistY + 25);
+      ctx.moveTo(center - 6, backWaistY + 25);
+      ctx.lineTo(center, backWaistY + 15);
+      ctx.lineTo(center + 6, backWaistY + 25);
 
       // bottom arrowhead (pointing down)
       ctx.moveTo(center - 6, bottomY - 25);
@@ -116,7 +116,7 @@
       // grainline label
       ctx.fillStyle = "#00f";
       ctx.font = "14px Arial";
-      ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
+      ctx.fillText("Grainline", center + 10, ((frontWaistY + bottomY) / 2) + scale);
     
       
       // bottom (hemline)
@@ -155,8 +155,8 @@
       
       // front waistline (based on length input)
       ctx.beginPath();
-      ctx.moveTo(50, waistY);
-      ctx.lineTo(350, waistY);
+      ctx.moveTo(50, frontWaistY);
+      ctx.lineTo(350, frontWaistY);
       ctx.strokeStyle = "#f00";
       ctx.setLineDash([2, 4]);
       ctx.stroke();
@@ -225,7 +225,7 @@
       ctx.fillText("4\" above bottom", 310, bottomY - 4 * scale + 5);
       ctx.fillStyle = "#f00";
       ctx.fillText("Back Waistline", 360, backWaistY + 5);
-      ctx.fillText(" Front Waistline", 360, waistY + 5);
+      ctx.fillText(" Front Waistline", 360, frontWaistY + 5);
       ctx.fillText("Back Hipline", 360, backHipY + 5);
       ctx.fillText("front Hipline", 360, frontHipY + 5);
       ctx.fillText("Front Crotchline", 360, frontCrotchY + 5);
