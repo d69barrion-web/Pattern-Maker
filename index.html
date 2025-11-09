@@ -247,8 +247,8 @@
    
       // bottom line
       ctx.beginPath();
-      ctx.moveTo(center - (frontBottom / 2), bottomY);
-      ctx.lineTo(center + (frontBottom / 2), bottomY);
+      ctx.moveTo(center - (frontBottom / 2), bottomY - (2 * scale));
+      ctx.lineTo(center + (frontBottom / 2), bottomY - (2 * scale));
       ctx.strokeStyle = "#000";
       ctx.setLineDash([]);
       ctx.stroke();
