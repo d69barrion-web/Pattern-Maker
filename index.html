@@ -79,7 +79,7 @@ mo<!DOCTYPE html>
 
       // center line
       ctx.beginPath();
-      ctx.moveTo(center, waistY);
+      ctx.moveTo(center, waistY - refY);
       ctx.lineTo(center, bottomY);
       ctx.strokeStyle = "#000";
       ctx.setLineDash([]); // solid
@@ -88,7 +88,7 @@ mo<!DOCTYPE html>
 
       // grainline arrow (center)
 ctx.beginPath();
-ctx.moveTo(center, waistY + 20); // start point (a bit below waist)
+ctx.moveTo(center, waistY + refY + 20); // start point (a bit below waist)
 ctx.lineTo(center, bottomY - 20); // end point (a bit above hem)
 ctx.strokeStyle = "#00f";
 ctx.lineWidth = 2;
@@ -132,7 +132,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.moveTo(50, bottomY - 2 * scale);
       ctx.lineTo(300, bottomY - 2 * scale);
       ctx.strokeStyle = "#999";
-      ctx.setLineDash([4, 4]);
+      ctx.setLineDash([2, 4]);
       ctx.stroke();
       ctx.closePath();
 
@@ -148,7 +148,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.moveTo(50, waistY);
       ctx.lineTo(350, waistY);
       ctx.strokeStyle = "#f00";
-      ctx.setLineDash([6, 4]);
+      ctx.setLineDash([2, 4]);
       ctx.stroke();
       ctx.closePath();
 
@@ -157,7 +157,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.moveTo(50, crotchY);
       ctx.lineTo(350, crotchY);
       ctx.strokeStyle = "#f00";
-      ctx.setLineDash([6, 4]);
+      ctx.setLineDash([2, 4]);
       ctx.stroke();
       ctx.closePath();
 
@@ -166,7 +166,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.moveTo(50, legY);
       ctx.lineTo(350, legY);
       ctx.strokeStyle = "#f00";
-      ctx.setLineDash([6, 4]);
+      ctx.setLineDash([2, 4]);
       ctx.stroke();
       ctx.closePath();
 
@@ -175,7 +175,7 @@ ctx.fillText("Grainline", center + 10, ((waistY + bottomY) / 2) + scale);
       ctx.moveTo(50, kneeY);
       ctx.lineTo(350, kneeY);
       ctx.strokeStyle = "#f00";
-      ctx.setLineDash([6, 4]);
+      ctx.setLineDash([2, 4]);
       ctx.stroke();
       ctx.closePath();
 
