@@ -19,6 +19,10 @@
       font-size: 16px;
       margin: 1px;
     }
+    ctrllLabel, ctrlInput {
+      font-size: 16px;
+      margin: 1px;
+    }
     .legend {
       margin-top: 16px;
       font-size: 14px;
@@ -87,12 +91,7 @@
       const backKnee = frontKnee + (2 * scale);
       const frontLeg = (leg / 2) * scale;
       const backLeg = frontLeg + (2 * scale);
-      const frontCrotch = (flatHip / 3) * scale;
-
-      // controls
-      <h3>Control</h3>
       
-      const frontCrotchLength = (flatHip / 3) * scale;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
