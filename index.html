@@ -254,10 +254,73 @@
       ctx.stroke();
       ctx.closePath();
 
-      //left bottom => knee line
+      //left bottom hem line (front)
       ctx.beginPath();
       ctx.moveTo(center - (frontBottom / 2), bottomY);
       ctx.lineTo(center - (frontBottom / 2), bottomY - (4 * scale));
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right bottom => hem line (front)
+      ctx.beginPath();
+      ctx.moveTo(center + (frontBottom / 2), bottomY);
+      ctx.lineTo(center + (frontBottom / 2), bottomY - (4 * scale));
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //left bottom => hem line (back)
+      ctx.beginPath();
+      ctx.moveTo((center - (frontBottom / 2)) - scale, bottomY);
+      ctx.lineTo(center - (frontBottom / 2)) - scale, bottomY - (4 * scale));
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right bottom => hem line (back)
+      ctx.beginPath();
+      ctx.moveTo(center + (frontBottom / 2)) + scale, bottomY);
+      ctx.lineTo(center + (frontBottom / 2)) + scale, bottomY - (4 * scale));
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //left bottom => knee line (front)
+      ctx.beginPath();
+      ctx.moveTo(center - (frontBottom / 2), bottomY - (4 * scale));
+      ctx.lineTo(center - ((knee / 2) * scale), kneeY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right knee => leg line (front)
+      ctx.beginPath();
+      ctx.moveTo(center + (frontBottom / 2), bottomY - (4 * scale));
+      ctx.lineTo(center + ((knee / 2) * scale), kneeY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //left bottom => knee line (back)
+      ctx.beginPath();
+      ctx.moveTo(center - (frontBottom / 2) - scale, bottomY - (4 * scale));
+      ctx.lineTo(center - ((knee / 2) * scale) - scale, kneeY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right knee => leg line (front)
+      ctx.beginPath();
+      ctx.moveTo(center + (frontBottom / 2) + scale, bottomY - (4 * scale));
+      ctx.lineTo(center + ((knee / 2) * scale) + scale, kneeY);
       ctx.strokeStyle = "#000";
       ctx.setLineDash([]);
       ctx.stroke();
