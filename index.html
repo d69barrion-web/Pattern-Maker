@@ -253,6 +253,15 @@
       ctx.setLineDash([]);
       ctx.stroke();
       ctx.closePath();
+
+      //left bottom => knee line
+      ctx.beginPath();
+      ctx.moveTo(center - (frontBottom / 2), bottomY);
+      ctx.lineTo(center - (frontBottom / 2), bottomY - (4 * scale));
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
     }
 
     // initial draw
