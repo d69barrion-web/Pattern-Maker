@@ -325,6 +325,42 @@
       ctx.setLineDash([]);
       ctx.stroke();
       ctx.closePath();
+
+      //left knee => leg line (front)
+      ctx.beginPath();
+      ctx.moveTo(center - (frontKnee / 2), kneeY);
+      ctx.lineTo(center - (frontLeg / 2), legY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right knee => leg line (front)
+      ctx.beginPath();
+      ctx.moveTo(center + (frontKnee / 2), kneeY);
+      ctx.lineTo(center + (frontLeg / 2), legY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //left knee => leg line (back)
+      ctx.beginPath();
+      ctx.moveTo(center - (backKnee / 2), kneeY);
+      ctx.lineTo(center - (backLeg / 2), legY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
+
+      //right knee => leg line (back)
+      ctx.beginPath();
+      ctx.moveTo(center + (backKnee / 2), kneeY);
+      ctx.lineTo(center + (backLeg / 2), legY);
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.closePath();
     }
 
     // initial draw
